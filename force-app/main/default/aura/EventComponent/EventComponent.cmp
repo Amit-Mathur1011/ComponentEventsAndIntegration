@@ -1,0 +1,36 @@
+<aura:component >
+    <aura:attribute name="data" type="Object" />
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="source" type="String" />
+    <aura:attribute name="income" type="String" />
+    
+    <aura:registerEvent name="cmpEvent" type="c:totalIncomeEvent"/>
+    
+    <aura:handler name="cmpEvent" event="c:totalIncomeEvent" action="{!c.incomeEvent}" />
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    
+    <lightning:card title="Total Income Calculator" iconName="standard:account">
+        
+        <div class="slds-grid slds-grid--align-end">
+            <lightning:button variant="brand" label="Show/Hide" title="Show/Hide" onclick="{! c.handleShowHide }" />
+        </div>
+        
+        <div aura:id="incomeForm" class="hide">
+            <lightning:input aura:id="source" name="source" label="Enter Source" value="{!v.source}" required="true" />
+            <lightning:input aura:id="amount" name="income" label="Enter Income" value="{!v.income}" required="true" />
+            <br />
+            <lightning:button variant="brand" label="Add Income" title="Add Income" onclick="{! c.addIncome }" />
+        </div>
+        <br />
+        <br />
+        <div>
+            <lightning:datatable
+                                 columns="{! v.columns }"
+                                 data="{! v.data }"
+                                 keyField="sno" />
+            <br />
+            <lightning:button variant="brand" label="Calculate Total Income" title="Calculate Total Income" onclick="{! c.calculateTotalIncome }" />
+        </div>
+    </lightning:card>
+    
+</aura:component>

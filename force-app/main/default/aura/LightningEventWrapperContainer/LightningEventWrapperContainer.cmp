@@ -1,0 +1,10 @@
+<aura:component >
+    <aura:handler name="cmpEvent" event="c:totalIncomeEvent" action="{!c.wrapperHandler}" includeFacets="true"/>
+    
+    Wrapper Container Section Begins..
+    	{!v.body}
+    Wrapper Container Section Ends..
+    
+    <!--To show the results include {!v.body}
+		and to show its handler action values add includeFacets="true"-->
+</aura:component>

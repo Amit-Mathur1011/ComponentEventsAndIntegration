@@ -1,0 +1,10 @@
+.THIS {
+}
+.THIS .slds-grid_align-end
+{
+    justify-content: left !important; 
+}
+.THIS .hide
+{
+    display : none;
+}

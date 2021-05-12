@@ -1,0 +1,25 @@
+<aura:component >
+    <aura:attribute name="totalIncomeEvent" type="decimal" default="0" />
+    <aura:handler name="cmpEvent" event="c:totalIncomeEvent" action="{!c.parentTotalIncomeEvent}" />
+    <!-- 1) With phase="capture" the event works in capture phase i.e. Parent to child
+   whereas in bubble phase child to parent(for bubble phase remove phase from both child & parent)
+
+  2) If one handler is capture & other is bubble then always it's executed as
+   first: Capture
+      second: bubble
+  
+  3) if event is stopped propagating in capture==> it will not propagate in bubble too because capture is executed first.
+  if event is stopped propagating in bubble==> it will not effect the bubble too because it is already executed first.
+  -->
+    Outer Component
+    <div class="innerComponent">
+        Inner Comp Section Begins..
+        <c:LightningEventWrapperContainer>
+            <c:EventComponent />
+        </c:LightningEventWrapperContainer>
+        
+        <!--This is Container Component contains another Component-->
+        Inner Comp Section Ends..
+    </div>
+    <span class="totalIncomeEvent">Total Income : {!v.totalIncomeEvent}</span>
+</aura:component>
